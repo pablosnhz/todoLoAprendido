@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'repasoPrimerosPasos';
+
+  user = 'Hola input'
+  user1 = 'Mensaje mostrado para el output'
+
+
+  recibiendoOutput(evento: string){
+    alert(evento);
+  }
 }

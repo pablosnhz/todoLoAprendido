@@ -1,0 +1,23 @@
+<button (click)="cambiarCargando()">{{ !cargando ? 'Terminar Carga' : 'Iniciar Carga' }}</button>
+
+<ng-container *ngIf="!cargando; else mostrarError">
+  <p>Los datos se estan cargando...</p>
+  <p>Espero que termine de cargar los datos.</p>
+</ng-container>
+
+<ng-template #mostrarError>
+  <p>Datos cargados con exito!</p>
+</ng-template>
+
+<hr>
+
+<ng-container *ngFor="let producto of listaProducto; else productosError">
+  <div *ngIf="producto.precio > 10">
+    <p>{{ producto.nombre }} - {{ producto.precio }}  </p>
+    <p> {{ producto.description }} </p>
+  </div>
+</ng-container>
+
+<ng-template #productosError>
+  <p>No hay productos para mostrar.</p>
+</ng-template>
