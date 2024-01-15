@@ -1,0 +1,18 @@
+<form [formGroup]="miFormularioAnidado">
+
+  <h3>Mi formulario en vivo</h3>
+  <pre> {{ miFormularioAnidado.valueChanges | async | json }} </pre>
+
+  <h4>NumeroMovil</h4>
+  <div formGroupName="telefonoMovil">
+    <input placeholder="Prefijo" formControlName="prefijo">
+    <input placeholder="Numero" formControlName="numero">
+  </div>
+
+  <h4>NumeroFijo</h4>
+  <div formGroupName="telefonoFijo">
+    <input placeholder="Prefijo" formControlName="prefijo">
+    <input placeholder="Numero" formControlName="numero">
+  </div>
+
+</form>

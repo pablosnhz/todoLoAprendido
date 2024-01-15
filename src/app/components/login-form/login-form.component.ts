@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IUsers, listaUsers } from 'src/app/models/datosReqres.interface';
+import { listaUsers } from 'src/app/models/datosReqres.interface';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,6 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginFormComponent implements OnInit{
 
   constructor( private authService: AuthService ){}
+
+  listaPeticion: listaUsers[] = [];
+  listaFiltrada: listaUsers[] = [];
+  filtroName: string = '';
 
   ngOnInit(): void {
     this.loginAccess();
@@ -29,19 +33,13 @@ export class LoginFormComponent implements OnInit{
     )
   }
 
-  listaPeticion: listaUsers[] = [];
-
   usarios(){
     this.authService.users().subscribe(
       (data) => {
         this.listaPeticion = data.data;
-        this.busquedaFiltrada();
       }
     );
   }
-
-  listaFiltrada: listaUsers[] = [];
-  filtroName: string = '';
 
   busquedaFiltrada(): void {
     const nombreCompletoBuscado = this.filtroName.toLowerCase().trim();

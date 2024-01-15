@@ -1,0 +1,50 @@
+<form [formGroup]="miFormularioValidado" (submit)="enviarFormulario()">
+
+  <h3>Datos en vivo Validados</h3>
+  <pre> {{ miFormularioValidado.valueChanges | async | json }} </pre>
+
+  <input placeholder="Nombre" formControlName="nombre">
+  <div *ngIf="nombre?.errors?.['required'] && nombre?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">Este campo es obligatorio</p>
+  </div>
+
+  <input placeholder="Apellido" formControlName="apellido">
+
+
+  <input placeholder="Edad" formControlName="edad">
+  <div *ngIf="edad?.errors?.['required'] && edad?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">Este campo es obligatorio</p>
+  </div>
+  <div *ngIf="edad?.errors?.['min'] && edad?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">Eres menor no puedes registrarte!</p>
+  </div>
+  <div *ngIf="edad?.errors?.['max'] && edad?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">Eres muy mayor!</p>
+  </div>
+
+
+  <input placeholder="Email" formControlName="email">
+  <div *ngIf="email?.errors?.['required'] && email?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">Este campo es obligatorio</p>
+  </div>
+  <div *ngIf="email?.errors?.['email'] && email?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">No es valido con el formato Email!</p>
+  </div>
+
+
+  <input type="password" placeholder="password" formControlName="password">
+  <div *ngIf="password?.errors?.['required'] && password?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">La contrasena es obligatoria</p>
+  </div>
+  <div *ngIf="password?.errors?.['pattern'] && password?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">La contrasena no permite simbolos</p>
+  </div>
+
+  <input type="checkbox" placeholder="Acepta" formControlName="acepta">Aceptar
+  <div *ngIf="acepta?.errors?.['requiredTrue'] && acepta?.touched ">
+    <p [ngStyle]="{ color: 'tomato' }">Este campo es obligatorio</p>
+  </div>
+
+  <button type="submit" [disabled]="this.miFormularioValidado.invalid">Enviar Solicitud</button>
+
+</form>

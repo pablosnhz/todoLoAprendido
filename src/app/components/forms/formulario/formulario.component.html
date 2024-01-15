@@ -1,0 +1,16 @@
+<form [formGroup]="miFormulario">
+
+<h3>Datos en vivo del Formulario</h3>
+
+<pre> {{ miFormulario.valueChanges | async | json  }}</pre>
+
+
+  <input matInput placeholder="nombre" formControlName="nombre">
+  <input placeholder="apellido" formControlName="apellido">
+  <input placeholder="email" formControlName="email">
+  <input placeholder="telefono" formControlName="telefono">
+  <input placeholder="direccion" formControlName="direccion">
+
+
+
+</form>
