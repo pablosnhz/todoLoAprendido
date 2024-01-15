@@ -1,0 +1,22 @@
+<!-- <div>
+  <input placeholder="Email" name="email">
+  <input  type="password" placeholder="Password" name="password">
+
+  <button (click)="loginAccess()">Iniciar sesion</button>
+</div> -->
+
+<input placeholder="Busqueda" [(ngModel)]="filtroName" (ngModelChange)="busquedaFiltrada()">
+<!-- busqueda con boton -->
+<!-- <button (click)="busquedaFiltrada()">Buscar</button> -->
+
+<ng-container *ngIf="listaFiltrada.length > 0 && filtroName.trim() !== ''; else noResults">
+  <div *ngFor="let user of listaFiltrada">
+    <p>{{ user.first_name }} {{ user.last_name }} - {{ user.email }}</p>
+    <img [src]="user.avatar">
+  </div>
+</ng-container>
+
+<ng-template #noResults>
+  <p>No hay resultados para la búsqueda actual.</p>
+</ng-template>
+

@@ -1,0 +1,18 @@
+<h3>Lista de Contactos</h3>
+<div *ngFor="let contacto of listaContactos">
+  <p (click)="obtenerContacto(contacto.id)">{{ contacto.nombre }}</p>
+  <button (click)="eliminarContacto(contacto.nombre)" >X</button>
+</div>
+
+<hr>
+
+<ng-container *ngIf="contactoSeleccionado; else sinDatos">
+  <p>{{ contactoSeleccionado.nombre }}</p>
+  <p>{{ contactoSeleccionado.apellido }}</p>
+  <p>{{ contactoSeleccionado.email }}</p>
+
+</ng-container>
+
+<ng-template #sinDatos>
+  <p>No encontramos datos de este usuario!</p>
+</ng-template>

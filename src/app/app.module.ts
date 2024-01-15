@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SaludoModule } from './components/saludo.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
     // IMPORTAMOS EL MODULO
-    SaludoModule
+    SaludoModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
