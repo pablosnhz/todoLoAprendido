@@ -1,1 +1,14 @@
-<p>contacts-page works!</p>
+<h3>Lista de Contactos!</h3>
+
+<div *ngFor="let contacto of listaContactos">
+  <!-- hacemos uso del [state] para mostrar los datos en el contactsDetail -->
+  <div routerLink="{{ contacto.id }}" [state]="{data: contacto}">
+    <h5>Detalles de contacto: {{ contacto.nombre }}</h5>
+  </div>
+  <button (click)="volverConContacto(contacto)">Seleccionar a {{ contacto.nombre }}</button>
+</div>
+
+
+<p>Mostrando lista filtrada por: </p>
+
+<button [routerLink]="['/home']">Home</button>

@@ -9,6 +9,7 @@ import { FormularioComponent } from './forms/formulario/formulario.component';
 import { FormularioAnidadoComponent } from './forms/formulario-anidado/formulario-anidado.component';
 import { FormularioArrayComponent } from './forms/formulario-array/formulario-array.component';
 import { FormularioValidadoComponent } from './forms/formulario-validado/formulario-validado.component';
+import { PaginaLoginComponent } from './pagina-login/pagina-login.component';
 
 
 
@@ -21,7 +22,8 @@ import { FormularioValidadoComponent } from './forms/formulario-validado/formula
     FormularioComponent,
     FormularioAnidadoComponent,
     FormularioArrayComponent,
-    FormularioValidadoComponent
+    FormularioValidadoComponent,
+    PaginaLoginComponent
   ],
   imports: [
     CommonModule,

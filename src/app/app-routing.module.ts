@@ -5,6 +5,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ContactsPageComponent } from './pages/contacts-page/contacts-page.component';
 import { ContactDetailPageComponent } from './pages/contact-detail-page/contact-detail-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { authGuard } from './guard/authguard.guard';
+
+
 
 const routes: Routes = [
   {
@@ -18,15 +21,18 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent
+    component: HomePageComponent,
+    canActivate: [ authGuard ]
   },
   {
     path: 'contacts',
-    component: ContactsPageComponent
+    component: ContactsPageComponent,
+    canActivate: [ authGuard ]
   },
   {
     path: 'contacts/:id',
-    component: ContactDetailPageComponent
+    component: ContactDetailPageComponent,
+    canActivate: [ authGuard ]
   },
   {
     path: '**',

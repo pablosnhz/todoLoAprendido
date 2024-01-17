@@ -1,1 +1,17 @@
-<p>home-page works!</p>
+<h2></h2>
+<h4>Lista de amigos</h4>
+
+<div *ngIf="contactoSeleccionado">
+  <h2>Tu contacto seleccionado es: {{ contactoSeleccionado.nombre }}</h2>
+</div>
+
+
+<h2 *ngIf="!contactoSeleccionado">Selecciona un contacto: </h2>
+<button (click)="navegarAContacts()"> Ver tus contactos</button>
+
+
+<div>
+  <h3>Lista filtrada por genero:</h3>
+  <a>HOMBRE || </a>
+  <a>MUJER</a>
+</div>
