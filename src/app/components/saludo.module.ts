@@ -10,6 +10,7 @@ import { FormularioAnidadoComponent } from './forms/formulario-anidado/formulari
 import { FormularioArrayComponent } from './forms/formulario-array/formulario-array.component';
 import { FormularioValidadoComponent } from './forms/formulario-validado/formulario-validado.component';
 import { PaginaLoginComponent } from './pagina-login/pagina-login.component';
+import { LoginPageComponent } from '../pages/login-page/login-page.component';
 
 
 
@@ -23,7 +24,7 @@ import { PaginaLoginComponent } from './pagina-login/pagina-login.component';
     FormularioAnidadoComponent,
     FormularioArrayComponent,
     FormularioValidadoComponent,
-    PaginaLoginComponent
+    PaginaLoginComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +39,8 @@ import { PaginaLoginComponent } from './pagina-login/pagina-login.component';
     FormularioComponent,
     FormularioAnidadoComponent,
     FormularioArrayComponent,
-    FormularioValidadoComponent
+    FormularioValidadoComponent,
+    PaginaLoginComponent
   ]
 })
 export class SaludoModule { }

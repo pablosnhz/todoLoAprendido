@@ -2,7 +2,7 @@
 <hr>
 <ng-container *ngIf="contacto; else elseContacto">
   <h4>Contacto: {{ id }}</h4>
-  <h3>Nombre: {{ contacto.nombre }} </h3>
+  <h3>Nombre: {{ contacto | nombreCompleto }} </h3>
   <h2>Email: {{ contacto.email }}</h2>
 </ng-container>
 
@@ -10,4 +10,4 @@
   <p>Eror al cargar el contacto!</p>
 </ng-template>
 
-<button (click)="volverASeleccion()">Volver a Contactos</button>
+<button routerLink="/contacts" [queryParams]="{ sexo: filtroprevio }">Volver a Contactos</button>

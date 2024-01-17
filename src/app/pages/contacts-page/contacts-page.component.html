@@ -2,13 +2,18 @@
 
 <div *ngFor="let contacto of listaContactos">
   <!-- hacemos uso del [state] para mostrar los datos en el contactsDetail -->
-  <div routerLink="{{ contacto.id }}" [state]="{data: contacto}">
+  <div routerLink="{{ contacto.nombre }}" [state]="{data: contacto, filtro: filtroSexo}">
     <h5>Detalles de contacto: {{ contacto.nombre }}</h5>
   </div>
   <button (click)="volverConContacto(contacto)">Seleccionar a {{ contacto.nombre }}</button>
 </div>
 
+<ng-container *ngIf="filtroSexo == 'mujer' || filtroSexo == 'hombre' else errorGenero">
+<p>Mostrando lista filtrada por: {{ filtroSexo }}</p>
+</ng-container>
 
-<p>Mostrando lista filtrada por: </p>
+<ng-template #errorGenero>
+  <p>Mostrando lista de contactos completa</p>
+</ng-template>
 
-<button [routerLink]="['/home']">Home</button>
+<button [routerLink]="['/home']">Volver</button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { ILista } from 'src/app/models/contactLista.interface';
 
 @Component({
@@ -13,14 +13,22 @@ export class HomePageComponent implements OnInit{
 
   contactoSeleccionado: ILista | undefined;
 
-  navegarAContacts(){
-    this.route.navigate(['/contacts']);
+  ngOnInit(): void {
+    if(history.state.data){
+      console.log(history.state.data);
+      this.contactoSeleccionado = history.state.data;
+    }
   }
 
-  ngOnInit(): void {
-      if(history.state.data){
-        console.log(history.state.data);
-        this.contactoSeleccionado = history.state.data;
+  navegarAContacts(){
+    // al principio tenia el navegar contactos con el route.navigate
+    // que me lleva a contacts, al agregar navigation estaria haciendo
+    // lo mismo mmmm dudoso el 'todos'
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        sexo: 'todos'
       }
     }
+    this.route.navigate(['/contacts'], navigationExtras);
+  }
 }

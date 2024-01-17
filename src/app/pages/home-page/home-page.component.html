@@ -1,17 +1,20 @@
 <h2></h2>
 <h4>Lista de amigos</h4>
 
-<div *ngIf="contactoSeleccionado">
-  <h2>Tu contacto seleccionado es: {{ contactoSeleccionado.nombre }}</h2>
-</div>
+<ng-container *ngIf="contactoSeleccionado; else errorContacto">
+  <h2>Tu amigo invisible es: {{ contactoSeleccionado.nombre }} {{ contactoSeleccionado.apellido }} </h2>
+</ng-container>
+
+<ng-template #errorContacto>
+  <h2 *ngIf="!contactoSeleccionado">Selecciona un contacto: </h2>
+</ng-template>
 
 
-<h2 *ngIf="!contactoSeleccionado">Selecciona un contacto: </h2>
 <button (click)="navegarAContacts()"> Ver tus contactos</button>
 
 
 <div>
   <h3>Lista filtrada por genero:</h3>
-  <a>HOMBRE || </a>
-  <a>MUJER</a>
+  <a [routerLink]="['/contacts']" [queryParams]="{ sexo: 'hombre' }">HOMBRE || </a>
+  <a [routerLink]="['/contacts']" [queryParams]="{ sexo: 'mujer' }">MUJER</a>
 </div>

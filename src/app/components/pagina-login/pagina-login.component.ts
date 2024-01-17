@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-login',
@@ -9,9 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PaginaLoginComponent implements OnInit{
 
 
-  constructor( private fb: FormBuilder ){}
+  constructor( private fb: FormBuilder , private route: Router){}
 
   loginFormulario: FormGroup = new FormGroup({})
+
+  @Output() loginAction: EventEmitter<{}> = new EventEmitter<{}>;
+
 
   ngOnInit(): void {
     this.loginFormulario = this.fb.group({
@@ -26,6 +30,16 @@ export class PaginaLoginComponent implements OnInit{
 
   get password(){
     return this.loginFormulario.get('password');
+  }
+
+
+  submitLogin(){
+    if(this.loginFormulario.valid){
+      // console.table(this.loginFormulario.value);
+
+      this.loginAction.emit(this.loginFormulario.value);
+
+    }
   }
 
 }

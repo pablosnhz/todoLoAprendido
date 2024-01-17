@@ -1,1 +1,18 @@
-<form [formGroup]="loginFormulario"></form>
+<form [formGroup]="loginFormulario" (submit)="submitLogin()">
+
+<input formControlName="email" placeholder="Email">
+<div *ngIf="email?.errors?.['required'] && email?.touched">
+  <p>El campo es obligatorio!</p>
+</div>
+<div *ngIf="email?.errors?.['email'] && email?.touched">
+  <p>El campo es obligatorio!</p>
+</div>
+
+<input formControlName="password" placeholder="Password" type="password">
+<div *ngIf="password?.errors?.['required'] && password?.touched">
+  <p>Ingrese una contraseña!</p>
+</div>
+
+<button type="submit" [disabled]="loginFormulario.invalid">Acceder</button>
+
+</form>

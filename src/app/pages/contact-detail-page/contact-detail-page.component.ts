@@ -17,6 +17,7 @@ export class ContactDetailPageComponent implements OnInit{
     email: '',
     sexo: 'mujer'
   }
+  filtroprevio: string | undefined;
 
   constructor(  private router: ActivatedRoute,
                 private route: Router ){}
@@ -31,16 +32,17 @@ export class ContactDetailPageComponent implements OnInit{
         }
       }
     )
-
+      // vamos a leer el STATE el contacto
+      // history para leer
+      // SIN ESTO DECLARADO EN EL CON EL [STATE] en contactsPage
+      // los datos no se muestran en el detail
       if(history.state.data){
         this.contacto = history.state.data;
       }
+    // lo declaramos en este html para luego llevarlo al otro html, con el [state]
+      if(history.state.filtro){
+        this.filtroprevio = history.state.filtro;
+      }
 
   }
-
-
-  volverASeleccion(){
-    this.route.navigate(['contacts'])
-  }
-
 }

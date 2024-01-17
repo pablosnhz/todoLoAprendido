@@ -4,13 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SaludoModule } from './components/saludo.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { ContactDetailPageComponent } from './pages/contact-detail-page/contact-detail-page.component';
 import { ContactsPageComponent } from './pages/contacts-page/contacts-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 
 
 @NgModule({
@@ -22,8 +23,9 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     ContactDetailPageComponent,
     ContactsPageComponent,
     HomePageComponent,
-    LoginPageComponent,
     NotFoundPageComponent,
+    LoginPageComponent,
+    NombreCompletoPipe
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 
     // IMPORTAMOS EL MODULO
     SaludoModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
